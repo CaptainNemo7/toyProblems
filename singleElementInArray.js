@@ -3,7 +3,7 @@ Given a sorted array consisting of only integers where every element appears twi
 one element which appears once. Find the single element that appears once.
 
 Constraints: 
-	Time: O(log n)
+	Time: O(n)
 	Space: O(1)
 
 Example: 
