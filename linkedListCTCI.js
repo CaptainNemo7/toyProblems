@@ -120,6 +120,72 @@ const plaindromeChecker = list => {
 }
 
 
+// 2.7 determine if two lists intersect and return the intersecting node if so
+const intersect = (list1, list2) => {
+  let dummy1 = list1;
+  let dummy2 = list2;
+  
+  let listDifference = 0;
+  let longerList = null;
+  let shorterList = null;
+  
+  let list1Counter = 1;
+  let list2Counter = 1;
+  
+  let list1Tail = null;
+  let list2Tail = null;
+  
+	while ( list1 !== null && list2 !== null ) {
+	  
+	  list1 = list1.next;
+	  if ( list1 !== null ) {
+	    list1Counter++;
+	  }
+	  if ( list1.next === null ) {
+	    list1Tail = list1;
+	  }
+	  
+	  if ( list2.next === null ) {
+	    list2Tail = list2;
+	  }
+	  list2 = list2.next;
+	  if ( list2 !== null ) {
+	    list2Counter++;
+	  }
+	  
+	}
+	
+	if ( list1Counter > list2Counter ) {
+	  listDifference = list1Counter - list2Counter;
+	  longerList = dummy1;
+	  shorterList = dummy2;
+	} else {
+	  listDifference = list2Counter - list1Counter;
+	  longerList = dummy2;
+	  shorterList = dummy1;
+	}
+	
+	if ( list1Tail === list2Tail ) {
+	  
+	  for ( let i=0; i<listDifference; i++ ) {
+	    longerList = longerList.next;
+	  }
+	  
+	  while ( longerList !== null ) {
+	    
+	    if ( longerList === shorterList ) {
+	      return longerList;
+	    }
+	    
+	    longerList = longerList.next;
+	    shorterList = shorterList.next;
+	  }
+	} else {
+	  return false;
+	}
+}
+
+
 
 
 
