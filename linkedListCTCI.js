@@ -152,7 +152,7 @@ const intersect = (list1, list2) => {
 	  if ( list2 !== null ) {
 	    list2Counter++;
 	  }
-	  
+
 	}
 	
 	if ( list1Counter > list2Counter ) {
@@ -185,7 +185,25 @@ const intersect = (list1, list2) => {
 	}
 }
 
-
+// 2.8 Given a circular linked list, find the node at the beginning of the loop
+const findBeginLoopNode = list => {
+	let fastPointer = list.next;
+	let slowPointer = list;
+	
+	const loopFinder = (fastList, slowList) => {
+	  if ( fastList === slowList ) {
+	    return fastList;
+	  }
+	  
+	  fast = fastList.next.next;
+	  slow = slowList.next;
+	  
+	  return loopFinder(fast, slow);
+	}
+	
+	return loopFinder(fastPointer, slowPointer)
+	
+}
 
 
 
