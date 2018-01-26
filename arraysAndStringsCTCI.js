@@ -41,3 +41,19 @@ const permutation = (str1, str2) => {
 	}
 	return false;
 }
+
+// 1.3 given a string, turn all spaces in string into '%20'
+const spaceHunter = str => {
+	str = str.trim().split(' ')
+	let result = ''
+	for ( let i=0; i<str.length; i++ ) {
+    if ( i+1 === str.length ) {
+      result += str[i];
+      break;
+    }
+	  result = result + str[i] + '%20'
+	}
+  return result;
+}
+
+
