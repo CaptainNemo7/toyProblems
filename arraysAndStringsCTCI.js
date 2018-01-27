@@ -20,7 +20,7 @@ const allUnique = str => {
   return true;
 }
 
-// Constant Space
+
 const allUnique = str => { 
   str = str.split('').sort().join('')
   for ( let i=1; i<str.length; i++ ) {
