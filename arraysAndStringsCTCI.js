@@ -58,6 +58,8 @@ const spaceHunter = str => {
 
 // 1.4 check for palindrome of input string
 const isPalindromePermutation = string => {
+  string = string.split(' ').join('')
+ 
   let characterCounts = {};
   for ( let i = 0; i < string.length; i++ ) {
     if ( characterCounts[string[i]] ) {
@@ -66,16 +68,48 @@ const isPalindromePermutation = string => {
       characterCounts[string[i]] = 1;
     }
   }
+  
   let oddCount = 0;
-  for (let char in characterCounts) { // O(N)
-    if (characterCounts[char] % 2) {
+  for ( let char in characterCounts ) { // O(N)
+    if ( characterCounts[char] % 2 ) {
       oddCount++;
     }
   }
-  if (oddCount > 1) {
+  if ( oddCount > 1 ) {
     return false;
   }
   return true;
 }
+
+// 1.5 compress given string by putting counter of letters after letter
+const compress = str => {
+  str = str.toLowerCase()
+  
+	let counter = 1;
+	let newStr = str.slice(0,1);
+	
+	for ( let i=1; i<str.length; i++ ) {
+	  console.log(str[i])
+	  if ( str[i] === str[i-1] ) {
+	    counter++;
+	  } else {
+	    newStr += counter;
+	    newStr += str[i];
+	    counter = 1;
+	  }
+	}
+	newStr += counter;
+	
+	if ( newStr.length >= str.length ) {
+	  return str;
+	}
+	
+	return newStr;
+}
+
+
+
+
+
 
 
