@@ -56,4 +56,26 @@ const spaceHunter = str => {
   return result;
 }
 
+// 1.4 check for palindrome of input string
+const isPalindromePermutation = string => {
+  let characterCounts = {};
+  for ( let i = 0; i < string.length; i++ ) {
+    if ( characterCounts[string[i]] ) {
+      characterCounts[string[i]] += 1;
+    } else {
+      characterCounts[string[i]] = 1;
+    }
+  }
+  let oddCount = 0;
+  for (let char in characterCounts) { // O(N)
+    if (characterCounts[char] % 2) {
+      oddCount++;
+    }
+  }
+  if (oddCount > 1) {
+    return false;
+  }
+  return true;
+}
+
 
