@@ -43,6 +43,44 @@ const makeTree = arr => {
  
 }
 
+// 4.3 turn tree into linked list: 
+// function Tree(val) {
+//   this.val = val;
+//   this.left = this.right = null;
+// }
+
+// function List(val) {
+//   this.val = val;
+//   this.next = null;
+// }
+
+// List.prototype.add = function(node) {
+//   this.next = new List(node);
+// }
+
+function treeToList(tree) {
+  let lists = [];
+  let dummy = new List(0);
+  let result = dummy;
+  addToList(lists, tree, 0);
+  for (let i=0; i< lists.length; i++ ) {
+    dummy.next = new List(lists[i])
+    dummy = dummy.next;
+  }
+  return result.next;
+}
+
+function addToList(lists, node, depth) {
+  if (node) {
+ 
+    lists.push(node);
+    addToList(lists, node.left, depth + 1);
+    addToList(lists, node.right, depth + 1);
+  }
+}
+
+
+
 
 
 
