@@ -25,7 +25,7 @@ const checkTriplets = array => {
     return false;
   }
   
-  if ( c + b <= a ) {
+  if ( b + c <= a ) {
     return false;
   }
   
@@ -36,6 +36,7 @@ const findCombos = array => {
   let allResults = [];
   let resultsCounter = 0;
   let current = [];
+  // set variables for array indices 
   let a = 0;
   let b = 1;
   let c = 1;
@@ -44,12 +45,13 @@ const findCombos = array => {
   while ( a + 1 !== array.length ) {
     // check if c and b are valid, if not incrememt/reset
     if ( c > array.length ) {
-      // if b is one off, need to reset all trackers
+      // if b is one off from the length, need to reset all trackers
       if (b + 1 === array.length ) {
         a = a + 1; 
         b = a + 1; 
         c = a + 2;
         current = [array[a], array[b], array[c]];
+      // otherwise if b is not one off from the length, increment b and c by one.  
       } else {
         b = b + 1;
         c = b + 1;
@@ -78,6 +80,36 @@ findCombos([11, 2, 3, 5, 8])
 //  [9,7, 6, 4, 2]
 
 
+
+
+
+
+// did it also with recursion
+const findCombos = intArr => {
+  let combos = 0;
+
+	intArr.sort((a, b) => {
+		return b - a;
+	});
+
+	const recurse = (sum, index, round) => {
+		if (sum < 0) {
+			combos++;
+			return;
+		} else if (round === 2) {
+			return;
+	}
+
+		for (let i = index; i < intArr.length; i++) {
+			currInt = intArr[i];
+			if (currInt) { 
+				recurse(sum - currInt, i + 1, round + 1); 
+			}
+		}
+	};
+	intArr.forEach((int, j) => recurse(int, j + 1, 0));
+	return combos;
+};
 
 
 
