@@ -82,34 +82,3 @@ findCombos([11, 2, 3, 5, 8])
 
 
 
-
-
-// did it also with recursion
-const findCombos = intArr => {
-  let combos = 0;
-
-	intArr.sort((a, b) => {
-		return b - a;
-	});
-
-	const recurse = (sum, index, round) => {
-		if (sum < 0) {
-			combos++;
-			return;
-		} else if (round === 2) {
-			return;
-	}
-
-		for (let i = index; i < intArr.length; i++) {
-			currInt = intArr[i];
-			if (currInt) { 
-				recurse(sum - currInt, i + 1, round + 1); 
-			}
-		}
-	};
-	intArr.forEach((int, j) => recurse(int, j + 1, 0));
-	return combos;
-};
-
-
-
