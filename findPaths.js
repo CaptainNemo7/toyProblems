@@ -32,17 +32,17 @@ const rabbitCarrots = (board) => {
       up = board[i-1][j];
     }
     
-    let right;
+    let right = 0;
     if ( j+1 < row.length) {
       right = board[i][j+1];
     }
     
-    let down;
+    let down = 0;
     if ( i < board.length ) {
       down = board[i+1][j];
     }
     
-    let left;
+    let left = 0;
     if ( j >= 0 ) {
       left = board[i][j-1];
     }
