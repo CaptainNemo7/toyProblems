@@ -33,17 +33,40 @@ const allUnique = str => {
 
 // 1.2 Given two strings, check if one is a permutation of the other
 const permutation = (str1, str2) => {
+  if (str1.length !== str2.length) return false;
   // can check length too
-	str1 = str1.toLowerCase().trim().split('').sort().join('');
-	str2 = str2.toLowerCase().trim().split('').sort().join('');
-	if ( str1 === str2 ) {
-	  return true;
-	}
-	return false;
+	// str1 = str1.toLowerCase().trim().split('').sort().join('');
+	// str2 = str2.toLowerCase().trim().split('').sort().join('');
+	// if ( str1 === str2 ) {
+	//   return true;
+	// }
+  // return false;
+  
+  let currentCount = 0;
+  for (let i=0; i<str1.length; i++) {
+    currentCount += str1[i].charCodeAt();
+  }
+
+  for (let i=0; i<str2.length; i++) {
+    currentCount -= str2[i].charCodeAt();
+  }
+
+  if (currentCount === 0) {
+    return true;
+  }
+
+  return false;
 }
 
 // 1.3 given a string, turn all spaces in string into '%20'
 const spaceHunter = str => {
+  // str = str.trim();
+  // var regex = /\b \b/gi;
+  // return str.replace(regex, '%20')
+
+  // str = str.trim();
+  // return encodeURI(str)
+
 	str = str.trim().split(' ')
 	let result = ''
 	for ( let i=0; i<str.length; i++ ) {
